@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>สมัครสมาชิก</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #signupForm="ngForm" (ngSubmit)="signup()" autocomplete="off">
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+          <ion-item>
+            <ion-input placeholder="ระบุอีเมล์" name="email" type="text" required [(ngModel)]="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="ระบุรหัสผ่าน" name="password" type="password" required [(ngModel)]="password"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="ระบุชื่อ-สกุล" name="name" type="text" required [(ngModel)]="name"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+        <div *ngIf="notic" class="alert alert-danger" text-center>{{notic}}</div>
+        <button ion-button full type="submit" [disabled]="!signupForm.form.valid">บันทึกข้อมูล</button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

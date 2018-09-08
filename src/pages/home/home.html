@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      เข้าสู่ระบบ
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+          <ion-item>
+            <ion-input placeholder="ระบุอีเมล์" name="email" type="text" required [(ngModel)]="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="ระบุรหัสผ่าน" name="password" type="password" required [(ngModel)]="password"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+        <div *ngIf="notic" class="alert alert-danger" text-center>{{notic}}</div>
+        <button ion-button full type="submit" [disabled]="!loginForm.form.valid">เข้าสู่ระบบ</button>
+        <button ion-button full type="button" (click)="gotoSignup()" color="secondary">สมัครสมาชิก</button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
